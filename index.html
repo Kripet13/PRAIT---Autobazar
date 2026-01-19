@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autobazar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Autobazar</h1>
+
+    <section class="card">
+      <h2>Přidat auto</h2>
+
+      <form id="carForm" novalidate>
+        <div class="grid">
+          <label>
+            Značka*
+            <input id="brand" type="text" placeholder="Škoda" />
+          </label>
+
+          <label>
+            Model*
+            <input id="model" type="text" placeholder="Octavia" />
+          </label>
+
+          <label>
+            Rok výroby*
+            <input id="year" type="number" placeholder="2018" />
+          </label>
+
+          <label>
+            Cena (Kč)*
+            <input id="price" type="number" placeholder="250000" />
+          </label>
+
+          <label>
+            Palivo
+            <select id="fuel">
+              <option value="">— nevyplněno —</option>
+              <option value="benzín">Benzín</option>
+              <option value="nafta">Nafta</option>
+              <option value="elektro">Elektro</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </label>
+
+          <label>
+            Nájezd (km)
+            <input id="mileage" type="number" placeholder="125000" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Přidat</button>
+          <button id="resetBtn" type="button" class="secondary">Vymazat formulář</button>
+        </div>
+
+        <p id="errorBox" class="error" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Seznam aut</h2>
+      <ul id="carList" class="list"></ul>
+
+      <div id="summary" class="summary">
+        Počet aut: 0 | Průměrná cena: 0 Kč
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

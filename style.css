@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select {
+  width: 280px;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+.actions {
+  margin-top: 12px;
+}
+
+button {
+  padding: 6px 10px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-top: 8px;
+}
