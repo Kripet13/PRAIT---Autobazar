@@ -20,12 +20,16 @@ export class Autobazar {
 
   prumernaCena() {
     if (this.auta.length === 0) return 0;
+
     let sum = 0;
-    for (const a of this.auta) sum += a.price;
+    for (const a of this.auta) {
+     sum += a.cenaKonecnaCislo(); // bere slevu jen když je
+    }
+
     return Math.round(sum / this.auta.length);
   }
 
-  pocet() {
-    return this.auta.length;
-  }
+    pocet() {
+      return this.auta.length;
+    }
 }

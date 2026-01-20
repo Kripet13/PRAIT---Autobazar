@@ -13,6 +13,7 @@ const brandEl = document.getElementById("brand");
 const modelEl = document.getElementById("model");
 const yearEl = document.getElementById("year");
 const priceEl = document.getElementById("price");
+const discountEl = document.getElementById("discount");
 const fuelEl = document.getElementById("fuel");
 const mileageEl = document.getElementById("mileage");
 
@@ -42,8 +43,12 @@ function render() {
     const li = document.createElement("li");
     li.className = "item";
 
-    const text = document.createElement("span");
-    text.textContent = auto.popis();
+    const text = document.createElement("div");
+    text.innerHTML = `
+      <strong>${auto.popis()}</strong><br>
+      Cena: ${auto.cenaText()}
+      ${auto.discount ? `<br>Po slevě (10 %): ${auto.cenaKonecnaText()}` : ""}
+    `;
 
     const btn = document.createElement("button");
     btn.textContent = "Smazat";
@@ -70,6 +75,7 @@ form.addEventListener("submit", (e) => {
   const model = modelEl.value;
   const year = Number(yearEl.value);
   const price = Number(priceEl.value);
+  const discount = discountEl.checked;
   const fuel = fuelEl.value;
   const mileage = mileageEl.value.trim();
 
@@ -88,7 +94,16 @@ form.addEventListener("submit", (e) => {
   const temp = bazar.pridat(brand.trim(), model.trim(), year, price, fuel, mileage);
 
   // vytvoříme instanci Auto
-  const auto = new Auto(temp.id, temp.brand, temp.model, temp.year, temp.price, temp.fuel, temp.mileage);
+  const auto = new Auto(
+  temp.id,
+  temp.brand,
+  temp.model,
+  temp.year,
+  temp.price,
+  temp.fuel,
+  temp.mileage,
+  discount
+);
 
   bazar.ulozAuto(auto);
 
