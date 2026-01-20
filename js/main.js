@@ -85,7 +85,7 @@ form.addEventListener("submit", (e) => {
   const year = Number(yearEl.value);
   const price = Number(priceEl.value);
   const fuel = fuelEl.value;
-  const mileage = mileageEl.value.trim(); // může zůstat prázdné
+  const mileage = mileageEl.value.trim();
 
   const chyba = validuj(brand, model, year, price);
   if (chyba) {
@@ -101,7 +101,7 @@ form.addEventListener("submit", (e) => {
   // jednoduché ID přes bazar
   const temp = bazar.pridat(brand.trim(), model.trim(), year, price, fuel, mileage);
 
-  // splnění zadání: vytvoříme instanci Auto
+  // vytvoříme instanci Auto
   const auto = new Auto(temp.id, temp.brand, temp.model, temp.year, temp.price, temp.fuel, temp.mileage);
 
   bazar.ulozAuto(auto);
