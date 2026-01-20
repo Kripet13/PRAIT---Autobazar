@@ -42,38 +42,24 @@ function render() {
     const li = document.createElement("li");
     li.className = "item";
 
-    const left = document.createElement("div");
-    const title = document.createElement("strong");
-    title.textContent = `${auto.brand} ${auto.model} (${auto.year})`;
-
-    const meta = document.createElement("div");
-    meta.className = "meta";
-
-    let extra = "";
-    if (auto.fuel) extra += ` | palivo: ${auto.fuel}`;
-    if (auto.mileage !== "") extra += ` | nájezd: ${Number(auto.mileage).toLocaleString("cs-CZ")} km`;
-
-    meta.textContent = `${auto.cenaText()}${extra}`;
-
-    left.appendChild(title);
-    left.appendChild(meta);
+    const text = document.createElement("span");
+    text.textContent = auto.popis();
 
     const btn = document.createElement("button");
     btn.textContent = "Smazat";
     btn.className = "secondary";
-    btn.addEventListener("click", () => {
+    btn.onclick = () => {
       bazar.smazat(auto.id);
       render();
-    });
+    };
 
-    li.appendChild(left);
+    li.appendChild(text);
     li.appendChild(btn);
     listEl.appendChild(li);
   }
 
-  const prumer = bazar.prumernaCena();
   summaryEl.textContent =
-    `Počet aut: ${bazar.pocet()} | Průměrná cena: ${prumer.toLocaleString("cs-CZ")} Kč`;
+    `Počet aut: ${bazar.pocet()} | Průměrná cena: ${bazar.prumernaCena().toLocaleString("cs-CZ")} Kč`;
 }
 
 form.addEventListener("submit", (e) => {
